@@ -20,6 +20,14 @@ jobs:
       - uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go }}
+      - uses: actions/setup-java@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
+      - name: install google-cloud-sdk
+        run: |
+          sudo apt-get update
+          sudo apt-get install google-cloud-sdk-pubsub-emulator -y
       - name: "go vet"
         run: |
           go vet ./...
